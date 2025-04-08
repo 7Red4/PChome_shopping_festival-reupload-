@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+* {
+  color: #fff;
+}
+
+:root {
+  font-family: "Noto Sans TC", sans-serif;
+  --va-button-icon-color: #005b9c !important;
+
+  &.in-game {
+    overflow: hidden;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  &.desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.game-font {
+  *:not(.material-icons) {
+    font-family: "Black Ops One", cursive;
+  }
+}
+
+body {
+  touch-action: manipulation;
+
+  &.in-game {
+    height: 100%;
+    position: fixed;
+    /* prevent overscroll bounce*/
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    /* iOS velocity scrolling */
+  }
+
+  &.desktop {
+    max-width: 480px;
+  }
+}
+
+* {
+  user-select: none;
+}
+
+body,
+button {
+  -webkit-touch-callout: none !important;
+}
+
+@keyframes breeth {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes breeth_reverse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

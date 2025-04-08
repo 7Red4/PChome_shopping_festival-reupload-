@@ -1,0 +1,28 @@
+.cropper {
+  z-index: 11;
+  .cropper__control span {
+    padding: 8px 12px;
+    background-color: rgb(21, 78, 193);
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .line-top,
+  .line-right,
+  .line-left,
+  .line-bottom {
+    display: none;
+  }
+
+  .face {
+    border-radius: 100%;
+  }
+
+  .mask {
+    opacity: 1;
+    border-radius: 100%;
+    background-color: #ffffff4f;
+    border: 2px dashed rgb(21, 78, 193);
+  }
+}

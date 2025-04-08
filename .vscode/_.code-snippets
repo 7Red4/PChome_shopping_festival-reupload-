@@ -1,0 +1,22 @@
+{
+  "scss_scoped_style": {
+    "scope": "vue",
+    "prefix": "scss",
+    "body": [
+      "<style lang=\"scss\" scoped>",
+      "$0",
+      "</style>"
+    ]
+  },
+  "vue3_setup": {
+    "scope": "vue",
+    "prefix": "vue3_setup",
+    "body": [
+      "<template></template>",
+      "",
+      "<script setup></script>",
+      "",
+      "<style lang=\"scss\" scoped></style>",
+    ]
+  }
+}
