@@ -9,7 +9,7 @@
       >close</va-icon>
 
       <div class="d-flex align--center pos-r">
-        <img src="/PChome_app.png" style="width: 48px;" class="mr-3" />
+        <img :src="`${BASE_URL}PChome_app.png`" style="width: 48px;" class="mr-3" />
         <div>
           <p>PChome24h購物</p>
           <p>立即使用官方 app</p>
@@ -74,6 +74,7 @@ import { useStore } from "vuex";
 import BotNav from "./components/BotNav.vue";
 import LoginPrize from "./components/LoginPrize.vue";
 
+const BASE_URL = import.meta.env.BASE_URL;
 const BOT_NAV = ref();
 const route = useRoute();
 const router = useRouter();

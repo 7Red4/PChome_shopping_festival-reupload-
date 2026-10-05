@@ -112,6 +112,7 @@
         class="fire-trigger"
         @touchstart.prevent
         @touchend="launchPinball"
+        @mouseup="launchPinball"
       ></button>
     </div>
   </div>
@@ -554,13 +555,13 @@ const rightTriggerUp = () => {
 
 const isEnd = ref(false);
 const endGame = async () => {
-  // const { res, error } = await api('/score', {
-  //   email: store.getters.getEmail,
-  //   type: 'pinball',
-  //   score: currentScore.value
-  // })
+  const { res, error } = await api('/score', {
+    email: store.getters.getEmail,
+    type: 'pinball',
+    score: currentScore.value
+  })
 
-  // store.dispatch('GET_USER');
+  store.dispatch('GET_USER');
 }
 
 function resetPinball() {

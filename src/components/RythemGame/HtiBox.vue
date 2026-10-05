@@ -1,5 +1,5 @@
 <template>
-  <div class="hit-box" @touchstart.prevent="judge">
+  <div class="hit-box" @touchstart.prevent="judge" @mousedown.prevent="judge">
     <img src="../../assets/rythemGame/note.png" class="coinball w100p" />
   </div>
 </template>

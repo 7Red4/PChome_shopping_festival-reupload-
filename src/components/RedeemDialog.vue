@@ -214,14 +214,7 @@ const redeem = async () => {
 }
 
 const redeemCoin = async () => {
-  if (!face.value) {
-    alert('需要編輯硬幣');
-    return;
-  }
-  if (!name.value || !mobile.value) {
-    alert('缺少欄位');
-    return;
-  }
+  // 展示版略過表單驗證：沒編輯硬幣就用預設金幣、姓名電話可留空
   if (!store.getters.getEmail) {
     const router = useRouter();
     router.push('/login');
@@ -233,7 +226,7 @@ const redeemCoin = async () => {
   });
 
   if (Prize.error) {
-    switch (error.status) {
+    switch (Prize.error.status) {
       case 404:
         alert('獎勵不存在');
         break;

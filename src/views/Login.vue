@@ -55,7 +55,7 @@ import { useRouter } from 'vue-router';
 import CoinRenderer from '../components/CoinRenderer.vue';
 import CoinCropper from '../components/CoinCropper.vue';
 import { useStore } from 'vuex';
-import api from '../api';
+import { DEMO_EMAIL, uploadImage } from '../api';
 
 const COIN_RENDERER = ref();
 const previewImage = ref('');
@@ -69,18 +69,8 @@ const email = ref(store.getters.getEmail || '');
 watch(() => previewImage.value, async (v) => {
   if (v && email.value) {
     imageUploaded.value = false;
-    const form = new FormData();
-    const res = await fetch(previewImage.value);
-    const image = await res.blob();
-    form.append('image', image, `${Date.now()}.png`);
-    form.append('email', email.value);
     try {
-      const res = await fetch('https://api.pchome24h-v1111p-game.com/api/uploadImage', {
-        method: 'POST',
-        body: form
-      })
-
-      const { result } = await res.json()
+      const result = await uploadImage(previewImage.value, email.value);
 
       window.coinImage = result.url;
       imageUploaded.value = true;
@@ -90,7 +80,15 @@ watch(() => previewImage.value, async (v) => {
   }
 })
 
-const handleStart = async (v) => {
+// 展示版略過表單驗證：沒填 email 就用 demo 帳號
+const handleStart = async () => {
+  const finalEmail = emailRule.test(email.value) ? email.value : DEMO_EMAIL;
+  localStorage.setItem('e', btoa(finalEmail));
+  if (previewImage.value) {
+    await uploadImage(previewImage.value, finalEmail);
+  }
+  await store.dispatch('GET_USER');
+  router.replace('/game/pinball');
 }
 
 onMounted(() => {

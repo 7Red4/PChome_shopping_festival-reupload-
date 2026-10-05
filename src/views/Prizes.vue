@@ -87,6 +87,7 @@ import CoinCropper from '../components/CoinCropper.vue';
 import MyGift from '../components/MyGiftDialog.vue';
 import Sponsors from '../components/Sponsors.vue';
 import { watch } from '@vue/runtime-core';
+import { uploadImage } from '../api';
 
 const store = useStore();
 const hasEmail = computed(() => store.getters.hasEmail);
@@ -100,18 +101,8 @@ const isChange = window.isChange;
 
 watch(() => previewImage.value, async () => {
   if (previewImage.value) {
-    const form = new FormData();
-    const res = await fetch(previewImage.value);
-    const image = await res.blob();
-    form.append('image', image, `${Date.now()}.png`);
-    form.append('email', store.getters.getEmail);
     try {
-      const res = await fetch('https://api.pchome24h-v1111p-game.com/api/uploadImage', {
-        method: 'POST',
-        body: form
-      })
-
-      const { result } = await res.json()
+      const result = await uploadImage(previewImage.value, store.getters.getEmail);
 
       window.coinImage = result.url;
       store.dispatch('GET_USER');

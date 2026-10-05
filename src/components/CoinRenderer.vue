@@ -83,7 +83,7 @@ const createDefaultEngine = () => new BABYLON.Engine(
 BABYLON.SceneLoader.ShowLoadingScreen = false;
 
 const createScene = () => {
-  const faceUrl = !!props.face ? props.face : "/texture/ob.png";
+  const faceUrl = !!props.face ? props.face : `${import.meta.env.BASE_URL}texture/ob.png`;
   const coinColor = !!props.face ? new BABYLON.Color3(0.98, 0.76, 0.15) : new BABYLON.Color3(1, 1, 1);
   const scene = new BABYLON.Scene(engine);
   camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 2.6, BABYLON.Vector3.Zero());
@@ -113,13 +113,13 @@ const createScene = () => {
   pbr.clearCoat.isEnabled = true;
   pbr.clearCoat.intensity = 1;
 
-  let hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData("/texture/environment.dds", scene);
+  let hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData(`${import.meta.env.BASE_URL}texture/environment.dds`, scene);
   pbr.reflectionTexture = hdrTexture;
   window.hdr = hdrTexture;
   ground.material = pbr;
 
   let coinModelUrl = !!props.face ? "coin4.glb" : "coin4-s.glb";
-  BABYLON.SceneLoader.Append("/", coinModelUrl, scene, (loadedObject) => {
+  BABYLON.SceneLoader.Append(import.meta.env.BASE_URL, coinModelUrl, scene, (loadedObject) => {
     loadedObject.meshes.forEach((item) => {
       if (item.name == "__root__" || item.name == "Coin") {
         item.rotation.x = 1;

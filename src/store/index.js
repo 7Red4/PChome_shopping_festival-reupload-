@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import api from '../api';
+import api, { DEMO_EMAIL } from '../api';
 
 const store = new Vuex.Store({
   state: {
@@ -67,8 +67,17 @@ const store = new Vuex.Store({
   },
   actions: {
     async GET_USER({ commit, dispatch }) {
-      const email = atob(localStorage.getItem('e') || '');
-      if (!email) return
+      // 展示版略過登入：沒有登入紀錄時直接使用 demo 帳號
+      let email = '';
+      try {
+        email = atob(localStorage.getItem('e') || '');
+      } catch (error) {
+        email = '';
+      }
+      if (!email) {
+        email = DEMO_EMAIL;
+        localStorage.setItem('e', btoa(email));
+      }
       const User = await api('/login', { email });
       if (!User.error) {
         commit('setUser', User.res);

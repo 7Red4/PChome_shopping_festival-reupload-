@@ -57,7 +57,8 @@ window.dayjs = dayjs;
 window.isChange = dayjs().diff('2021-11-14 10:59:00', 'second') > 0;
 // window.isChange = true;
 
-(async () => {
+// 桌機手機框模式下，外層頁面只負責顯示 iframe，不掛載 app
+!window.__PHONE_FRAME__ && (async () => {
   await store.dispatch('GET_USER');
 
   const app = createApp(App);

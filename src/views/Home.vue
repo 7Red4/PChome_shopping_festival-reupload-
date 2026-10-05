@@ -1,6 +1,6 @@
 <template>
   <div class="pos-r d-flex flex-column align--center">
-    <img src="/main_visual.png" class="w100p" />
+    <img :src="`${BASE_URL}main_visual.png`" class="w100p" />
     <img src="../assets/main/prize_switch.png" class="prize_switch" />
     <img
       src="../assets/main/start_expirence.png"
@@ -44,6 +44,7 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import { inject, watch } from '@vue/runtime-core';
 
+const BASE_URL = import.meta.env.BASE_URL;
 const store = useStore();
 const router = useRouter();
 

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '/src/views/Home.vue';
 import Login from '/src/views/Login.vue';
 import About from '/src/views/About.vue';
@@ -47,7 +47,8 @@ const routes = [
   }
 ];
 const router = createRouter({
-  history: createWebHistory(),
+  // GitHub Pages 沒有 SPA fallback，改用 hash 路由
+  history: createWebHashHistory(),
   routes
 });
 export default router;
