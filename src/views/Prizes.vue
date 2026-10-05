@@ -47,7 +47,7 @@
         <SizeBox height="24" />
         <div class="prize_TV w80p">
           <img v-if="isChange" src="../assets/main/ECOVACS.png" class="w100p" />
-          <img v-else src="../assets/main/11111p.png" class="w100p" />
+          <img v-else src="../assets/main/11111P.png" class="w100p" />
           <va-button
             class="action"
             :class="{ w1: !isChange, w2: isChange }"

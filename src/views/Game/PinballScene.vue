@@ -170,7 +170,7 @@ import button_off from '../../assets/pinball/button_off.png';
 import button_on from '../../assets/pinball/button_on.png';
 import garmin from '../../assets/pinball/garmin.png';
 import electrolux from '../../assets/pinball/electrolux.png';
-import Mk from '../../assets/pinball/Mk.png';
+import Mk from '../../assets/pinball/MK.png';
 import ns from '../../assets/pinball/ns.png';
 import dome from '../../assets/pinball/wireframe/dome.svg';
 import hook_wall from '../../assets/pinball/wireframe/hook_wall.svg';
